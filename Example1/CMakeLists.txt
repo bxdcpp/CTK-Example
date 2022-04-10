@@ -22,12 +22,17 @@ cmake_minimum_required(VERSION 2.8.6)
 
 project(Example1)
 
-find_package(CTK REQUIRED)
-include(${CTK_USE_FILE})
 
-find_package(Qt4 REQUIRED)
-include(${QT_USE_FILE})
+
+#find_package(Qt5 REQUIRED Core Gui)
+
+#include(${QT_USE_FILE})
 
 add_executable(example1 main.cpp)
-target_link_libraries(example1 CTKWidgets)
+target_link_libraries(example1 
+  CTKWidgets
+  Qt5::Core
+  Qt5::Xml
+
+)
 

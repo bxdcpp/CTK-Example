@@ -19,8 +19,52 @@
 ################################################################################
 
 cmake_minimum_required(VERSION 2.8.6)
+project(CTK-Examples)
+cmake_policy(SET CMP0020 NEW)
+cmake_policy(SET CMP0043 NEW)
+cmake_policy(SET CMP0048 NEW)
+cmake_policy(SET CMP0053 NEW)
+cmake_policy(SET CMP0071 NEW)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../../../bin)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../../../bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../../../bin)
 
-project(Examples)
+message(status,${CMAKE_BINARY_DIR}/../../../bin)
+
+find_package(Qt5 REQUIRED 
+  Core 
+  Gui 
+  Widgets 
+  Multimedia 
+  MultimediaWidgets
+  Network 
+  OpenGL 
+  Xml 
+  AxContainer 
+  AxServer 
+  PrintSupport
+  Sql
+  Concurrent
+  Qml
+  LinguistTools
+  WebEngine
+  WebEngineWidgets
+)
+
+set(CTK_DIR T:/Slicer-build/CTK-build)
+set(CTK_SRC T:/Slicer-build/CTK)
+
+find_package(CTK REQUIRED)
+include(${CTK_USE_FILE})
+
+#��ȫ��moc
+#set(CMAKE_AUTOMOC ON)
+#��ȫ��uic
+#set(CMAKE_AUTOUIC ON)
+#��ȫ��rcc����ʾ����û��ʹ��qrc���˾����ȥ��
+#set(CMAKE_AUTORCC ON)
 
 add_subdirectory(Example1)
+add_subdirectory(HelloCTK)
+add_subdirectory(EmbedCTK)
 
